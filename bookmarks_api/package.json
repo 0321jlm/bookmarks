@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/0321jlm/bookmarks#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "ejs": "^2.7.2",
     "express": "^4.17.1",
     "method-override": "^3.0.0"
