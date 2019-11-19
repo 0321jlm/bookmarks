@@ -45,7 +45,7 @@ class NewForms extends React.Component {
           value={this.state.title}
           placeholder="website"
         />
-
+        /////////////////////////////////////////
         <label htmlFor="url"></label>
         <input
           type="text"
@@ -55,7 +55,6 @@ class NewForms extends React.Component {
           value={this.state.url}
           placeholder="http://"
         />
-
         <input type="submit" value="Add!" />
       </form>
     );
