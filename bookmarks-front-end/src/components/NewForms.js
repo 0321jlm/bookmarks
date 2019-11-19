@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 
 class NewForms extends React.Component {
@@ -33,6 +33,7 @@ class NewForms extends React.Component {
     });
     this.props.getBookmarks(response.data);
   }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -45,7 +46,6 @@ class NewForms extends React.Component {
           value={this.state.title}
           placeholder="website"
         />
-        /////////////////////////////////////////
         <label htmlFor="url"></label>
         <input
           type="text"
