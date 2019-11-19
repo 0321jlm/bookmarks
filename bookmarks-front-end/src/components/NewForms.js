@@ -15,9 +15,7 @@ class NewForms extends React.Component {
   handleChange(event) {
     console.log("Handle change event", event.currentTarget.value);
     this.setState({
-
       [event.currentTarget.name]: event.currentTarget.value
-
     });
   }
 
@@ -45,7 +43,7 @@ class NewForms extends React.Component {
           name="title"
           onChange={this.handleChange}
           value={this.state.title}
-          placeholder="add a book title"
+          placeholder="website"
         />
 
         <label htmlFor="url"></label>
@@ -55,10 +53,10 @@ class NewForms extends React.Component {
           name="url"
           onChange={this.handleChange}
           value={this.state.url}
-          placeholder="add a book image"
+          placeholder="http://"
         />
 
-        <input type="submit" value="Add a Book to the Book List" />
+        <input type="submit" value="Add!" />
       </form>
     );
   }
