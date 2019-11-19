@@ -15,6 +15,9 @@ class App extends Component {
       bookmarks: []
     };
     this.getBookmarks = this.getBookmarks.bind(this);
+
+    this.toggleUpdateForm = this.toggleUpdateForm.bind(this);
+
     this.deleteBookmark = this.deleteBookmark.bind(this);
   }
 
@@ -30,6 +33,12 @@ class App extends Component {
     this.getBookmarks();
   }
 
+
+  toggleUpdateForm() {
+    console.log("modal");
+  }
+
+
   async deleteBookmark(id) {
     await axios.delete(`${baseURL}/bookmarks/${id}`);
     const filteredBookmarks = this.state.bookmarks.filter(bookmark => {
@@ -39,6 +48,7 @@ class App extends Component {
       bookmarks: filteredBookmarks
     });
   }
+
   render() {
     return (
       <div className="container">
@@ -49,6 +59,7 @@ class App extends Component {
           {this.state.bookmarks.map(bookmark => {
             return (
               <li key={bookmark._id}>
+
                 {bookmark.title}
                 <a href={bookmark.url}>
                   {bookmark.url}
