@@ -14,15 +14,18 @@ class NewForms extends React.Component {
 
   handleChange(event) {
     this.setState({
-      [event.currentTarget.title]: event.currentTarget.value
+      [event.currentTarget.title]: event.currentTarget.value,
+      [event.currentTarget.url]: event.currentTarget.value
     });
   }
 
   async handleSubmit(event) {
     event.preventDefault();
     const baseURL = this.props.baseURL;
+    console.log("this state title: ", this.state.title);
     const response = await axios.post(`${baseURL}/bookmarks`, {
-      name: this.state.name
+      title: this.state.title,
+      url: this.state.url
     });
     this.setState({
       title: "",
@@ -36,13 +39,13 @@ class NewForms extends React.Component {
         <label htmlFor="title"></label>
         <input
           type="text"
-          id="type"
-          name="type"
+          id="title"
+          name="title"
           onChange={this.handleChange}
           value={this.state.title}
           placeholder="add a book title"
         />
-        <label htmlFor="title"></label>
+        <label htmlFor="url"></label>
         <input
           type="text"
           id="url"
