@@ -37,7 +37,11 @@ class App extends Component {
         <NewForms getBookmarks={this.getBookmarks} baseURL={baseURL} />
         <ul>
           {this.state.bookmarks.map(bookmark => {
-            return <li key={bookmark._id}>{bookmark.title}</li>;
+            return (
+              <li key={bookmark._id}>
+                {bookmark.title}, <a href={bookmark.url}>{bookmark.url}</a>
+              </li>
+            );
           })}
         </ul>
       </div>

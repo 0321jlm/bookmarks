@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import axios from "axios";
 
 class NewForms extends React.Component {
@@ -13,9 +13,11 @@ class NewForms extends React.Component {
   }
 
   handleChange(event) {
+    console.log("Handle change event", event.currentTarget.value);
     this.setState({
-      [event.currentTarget.title]: event.currentTarget.value,
-      [event.currentTarget.url]: event.currentTarget.value
+
+      [event.currentTarget.name]: event.currentTarget.value
+
     });
   }
 
@@ -45,6 +47,7 @@ class NewForms extends React.Component {
           value={this.state.title}
           placeholder="add a book title"
         />
+
         <label htmlFor="url"></label>
         <input
           type="text"
