@@ -2,76 +2,49 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-
+const cors = require("cors");
 const methodOverride = require("method-override");
 
-const request = require("request");
-const rp = require("request-promise");
-const port = 3000;
+// const  = 3000;
 // Allow use of Heroku's port or your own local port, depending on the environment
-// const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // MIDDLEWARE
-// body parser middleware
-
-// app.use(express.json());
+app.use(express.json());
 app.use(methodOverride("_method"));
-// static files middleware
-app.use(express.static(__dirname + "/public"));
 
 // CONTROLLERS
-// fitting room three
-const showController = require("./controllers/show.js");
-const usersController = require("./controllers/users.js");
-
-app.use("/show", showController);
-app.use("/users", usersController);
-
-const getStock = stock => {
-  let endpoint =
-    `https://www.alphavantage.co/query?apikey=S606HP5OS4LQW4TV&function=TIME_SERIES_DAILY_ADJUSTED&symbol=` +
-    stock;
-
-  return lastClose;
+const whitelist = [
+  "http://localhost:3000",
+  "https://fathomless-sierra-68956.herokuapp.com"
+];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  }
 };
 
-app.get("/", (req, res) => {
-  Bookmark.find({}, (error, allBookmarks) => {
-    let tempallBookmarks = allBookmarks;
-    for (x in allStocks) {
-      tempStock = allStocks[x].stock;
-    }
+app.use(express.json()); //use .json(), not .urlencoded()
+app.use(cors(corsOptions));
 
-    // console.log("allStocks =>", allStocks);
-    if (error) {
-      res.send(error);
-    } else {
-      res.render("index.ejs", {
-        Bookmarks: allBookmarks
-      });
-    }
-  });
-});
+const bookmarksController = require("./controllers/bookmarks");
+app.use("/bookmarks", bookmarksController);
+
 // SEED ROUTE
-// NOTE: Do NOT run this route until AFTER you have a create user route up and running, as well as encryption working!
-
-const Bookmarks = require("./models/Bookmarks.js");
-const seedBookmarks = require("./models/seedBookmarks.js");
-
+const seedBookmarks = require("./models/seedBookmarks");
 app.get("/seedBookmarks", (req, res) => {
   // seeds the data
-  Bookmark.create(seedBookmarks, (err, createdBookmarks) => {
-    // logs created users
+  console.log("In seedBookmarks");
+  Bookmarks.create(seedBookmarks, (err, createdBookmarks) => {
     console.log(createdBookmarks);
     // redirects to index
-    res.redirect("/");
+    // res.redirect("/");
+    res.send("Seed");
   });
-});
-
-//put this above your show.ejs file
-app.get("/new", (req, res) => {
-  console.log("In display new page");
-  res.render("new.ejs");
 });
 
 // CONNECTIONS
@@ -80,9 +53,9 @@ app.listen(PORT, () => {
 });
 
 const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/stock";
+  process.env.MONGODB_URI || "mongodb://localhost:27017/Bookmarks";
 
-mongoose.connect("mongodb://localhost:27017/stock");
+mongoose.connect("mongodb://localhost:27017/Bookmarks");
 // Connect to Mongo
 // mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, () => {
 //   console.log("connected to mongo database");

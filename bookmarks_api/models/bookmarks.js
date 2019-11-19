@@ -3,10 +3,10 @@
 const mongoose = require("mongoose");
 
 const bookmarksSchema = new mongoose.Schema({
-  title: string,
-  url: string
+  title: String,
+  url: String
 });
 
-const Bookmark = mongoose.model("Bookmark", bookmarksSchema);
+const Bookmarks = mongoose.model("Bookmarks", bookmarksSchema);
 
-module.exports = Bookmark;
+module.exports = Bookmarks;
