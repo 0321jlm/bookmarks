@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import NewForm from "./components/NewForm.js";
+import NewForms from "./components/NewForms.js";
 import "./App.css";
 let baseURL = process.env.REACT_APP_BASEURL;
 
@@ -34,7 +34,7 @@ class App extends Component {
       <div className="container">
         <h1>Bookmarks</h1>
         <h3>Add a new bookmark</h3>
-        <NewForm getBookmarks={this.getBookmarks} baseURL={baseURL} />
+        <NewForms getBookmarks={this.getBookmarks} baseURL={baseURL} />
         <ul>
           {this.state.bookmarks.map(bookmark => {
             return <li key={bookmark._id}>{bookmark.title}</li>;
