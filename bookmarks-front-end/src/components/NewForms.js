@@ -15,13 +15,16 @@ class NewForms extends React.Component {
   handleChange(event) {
     console.log("Handle change event", event.currentTarget.value);
     this.setState({
+
       [event.currentTarget.name]: event.currentTarget.value
+
     });
   }
 
   async handleSubmit(event) {
     event.preventDefault();
     const baseURL = this.props.baseURL;
+    console.log("this state title: ", this.state.title);
     const response = await axios.post(`${baseURL}/bookmarks`, {
       title: this.state.title,
       url: this.state.url
