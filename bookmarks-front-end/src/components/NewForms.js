@@ -13,7 +13,7 @@ class NewForms extends React.Component {
   }
 
   handleChange(event) {
-    console.log("Handle change event", event.currentTarget.value);
+ 
     this.setState({
       [event.currentTarget.name]: event.currentTarget.value
     });
