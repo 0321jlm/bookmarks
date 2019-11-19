@@ -4,7 +4,8 @@
   "description": "<<<<<<< HEAD Fred Kaesmann - Nov. 18 ======= This is Jess' comment. >>>>>>> dae83e7ca9ed5d79769661255fa5194f0732deaf",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,8 +20,10 @@
   "homepage": "https://github.com/0321jlm/bookmarks#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "cors": "^2.8.5",
     "ejs": "^2.7.2",
     "express": "^4.17.1",
-    "method-override": "^3.0.0"
+    "method-override": "^3.0.0",
+    "mongoose": "^5.7.11"
   }
 }
