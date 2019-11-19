@@ -15,6 +15,7 @@ class App extends Component {
       bookmarks: []
     };
     this.getBookmarks = this.getBookmarks.bind(this);
+    this.toggleUpdateForm = this.toggleUpdateForm.bind(this);
   }
 
   async getBookmarks() {
@@ -29,6 +30,10 @@ class App extends Component {
     this.getBookmarks();
   }
 
+  toggleUpdateForm() {
+    console.log("modal");
+  }
+
   render() {
     return (
       <div className="container">
@@ -39,7 +44,13 @@ class App extends Component {
           {this.state.bookmarks.map(bookmark => {
             return (
               <li key={bookmark._id}>
-                {bookmark.title}, <a href={bookmark.url}>{bookmark.url}</a>
+                {bookmark.title},{" "}
+                <a href={bookmark.url}>
+                  {bookmark.url}
+                  <button onClick={() => this.toggleUpdateForm()}>
+                    UPDATE
+                  </button>
+                </a>
               </li>
             );
           })}
