@@ -50,7 +50,7 @@ class UpdateForm extends React.Component {
     return (
       <div className="modal edit">
         <h1>update</h1>
-        <p>id = {this.props.bookmark._id}</p>
+        {/* <p>id = {this.props.bookmark._id}</p> */}
         <form onSubmit={() => this.Update(this.props.bookmark)}>
           <div className="row">
             <label htmlFor="title">Title:</label>
