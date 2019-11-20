@@ -84,63 +84,41 @@ class App extends Component {
       //   </ul>
       // </div>
       <div className="container">
-<<<<<<< HEAD
-=======
-
->>>>>>> 0d41428e596ba29f4a0d7d652e4abd75b4dd831c
         <div align="center">
           <div id="Booker">
             <h1>Bookmarks</h1>
             <h3>Add a new bookmark</h3>
             <NewForms getBookmarks={this.getBookmarks} baseURL={baseURL} />
             <div align="center">
-<<<<<<< HEAD
               <ul>
                 {this.state.bookmarks.map(bookmark => {
                   return (
                     <li key={bookmark._id}>
-                      {" "}
-                      <a target="_blank" href={bookmark.url}>
-                        {bookmark.title}
-                      </a>{" "}
-                      delete update
+                      {bookmark.title}
+                      <a href={bookmark.url}>{bookmark.url}</a>
+                      <button onClick={() => this.deleteBookmark(bookmark._id)}>
+                        DELETE
+                      </button>
+
+                      <button
+                        onClick={() =>
+                          this.toggleUpdateForm(bookmark, bookmark.id)
+                        }
+                      >
+                        UPDATE
+                      </button>
                     </li>
                   );
                 })}
               </ul>
             </div>
           </div>
+          <UpdateForm
+            handleChange={this.handleChange}
+            baseURL={baseURL}
+            bookmark={this.state.bookmark}
+          />
         </div>
-=======
-          <ul>
-          {this.state.bookmarks.map(bookmark => {
-            return (
-              <li key={bookmark._id}>
-                {bookmark.title}
-                <a href={bookmark.url}>{bookmark.url}</a>
-                <button onClick={() => this.deleteBookmark(bookmark._id)}>
-                  DELETE
-                </button>
-
-                <button
-                  onClick={() => this.toggleUpdateForm(bookmark, bookmark.id)}
-                >
-                  UPDATE
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-            </div>
-          </div>
-        <UpdateForm
-          handleChange={this.handleChange}
-          baseURL={baseURL}
-          bookmark={this.state.bookmark}
-        />
-        </div>
-
->>>>>>> 0d41428e596ba29f4a0d7d652e4abd75b4dd831c
       </div>
     );
   }
