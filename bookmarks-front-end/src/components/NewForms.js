@@ -45,10 +45,7 @@ class NewForms extends React.Component {
           value={this.state.title}
           placeholder="website"
         />
-<<<<<<< HEAD
 
-=======
->>>>>>> 0d41428e596ba29f4a0d7d652e4abd75b4dd831c
         <label htmlFor="url"></label>
         <input
           type="text"
