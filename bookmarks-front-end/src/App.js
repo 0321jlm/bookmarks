@@ -32,18 +32,28 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Bookmarks</h1>
-        <h3>Add a new bookmark</h3>
-        <NewForms getBookmarks={this.getBookmarks} baseURL={baseURL} />
-        <ul>
-          {this.state.bookmarks.map(bookmark => {
-            return (
-              <li key={bookmark._id}>
-                {bookmark.title}, <a href={bookmark.url}>{bookmark.url}</a>
-              </li>
-            );
-          })}
-        </ul>
+        <div align="center">
+          <div id="Booker">
+            <h1>Bookmarks</h1>
+            <h3>Add a new bookmark</h3>
+            <NewForms getBookmarks={this.getBookmarks} baseURL={baseURL} />
+            <div align="center">
+              <ul>
+                {this.state.bookmarks.map(bookmark => {
+                  return (
+                    <li key={bookmark._id}>
+                      {" "}
+                      <a target="_blank" href={bookmark.url}>
+                        {bookmark.title}
+                      </a>{" "}
+                      delete update
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
