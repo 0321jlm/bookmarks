@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 
 class NewForms extends React.Component {
@@ -22,6 +22,7 @@ class NewForms extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const baseURL = this.props.baseURL;
+    console.log("this state title: ", this.state.title);
     const response = await axios.post(`${baseURL}/bookmarks`, {
       title: this.state.title,
       url: this.state.url
@@ -32,6 +33,7 @@ class NewForms extends React.Component {
     });
     this.props.getBookmarks(response.data);
   }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -42,9 +44,8 @@ class NewForms extends React.Component {
           name="title"
           onChange={this.handleChange}
           value={this.state.title}
-          placeholder="add a book title"
+          placeholder="website"
         />
-
         <label htmlFor="url"></label>
         <input
           type="text"
@@ -52,10 +53,9 @@ class NewForms extends React.Component {
           name="url"
           onChange={this.handleChange}
           value={this.state.url}
-          placeholder="add a book image"
+          placeholder="http://"
         />
-
-        <input type="submit" value="Add a Book to the Book List" />
+        <input type="submit" value="Add!" />
       </form>
     );
   }
