@@ -94,12 +94,14 @@ class App extends Component {
                 {this.state.bookmarks.map(bookmark => {
                   return (
                     <li key={bookmark._id}>
-                      {bookmark.title}
-                      <a href={bookmark.url}>{bookmark.url}</a>
+                      {/* {bookmark.title} */}
+                      {/* <a href={bookmark.url}>{bookmark.url}</a> */}{" "}
+                      <a target="_blank" href={bookmark.url}>
+                        {bookmark.title}
+                      </a>{" "}
                       <button onClick={() => this.deleteBookmark(bookmark._id)}>
                         DELETE
-                      </button>
-
+                      </button>{" "}
                       <button
                         onClick={() =>
                           this.toggleUpdateForm(bookmark, bookmark.id)
